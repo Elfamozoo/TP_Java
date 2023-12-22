@@ -1,4 +1,4 @@
-package javatp.model;
+package modele;
 
 import java.io.Serializable;
 
