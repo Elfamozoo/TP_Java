@@ -49,9 +49,26 @@
 
 package main;
 
-/**
- * @author Twixy
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import dao.Entreprise;
+
 public class MenuPrincipale {
-    
+	private static final String DB_URL = "jdbc:mysql://localhost:3306?useSSL=false";
+	private static final String DB_NAME = "Entreprise";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "";
+
+    public static void main(String[] args) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            Entreprise.createDatabase(conn, DB_NAME);
+            Entreprise.useDatabase(conn, DB_NAME);
+            Entreprise.createTables(conn);
+            Entreprise.addUser(conn, 5, "Dujardin", "Jean", "email2@email.fr", "login2", "mdp2");
+            Entreprise.readAllUsers(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
