@@ -51,23 +51,81 @@ public class Entreprise {
 			}
 		}
 	}
-	
-	public static void addUser(Connection conn, int employeeNumber, String nom, String prenom, String email, String login, String password) throws SQLException {
-	    String query = "INSERT INTO Utilisateurs (numeroEmploye, nom, prenom, email, login, motDePasse) VALUES (?, ?, ?, ?, ?, ?)";
-	    try (PreparedStatement stmt = conn.prepareStatement(query)) {
-	        stmt.setInt(1, employeeNumber);
-	        stmt.setString(2, nom);
-	        stmt.setString(3, prenom);
-	        stmt.setString(4, email);
-	        stmt.setString(5, login);
-	        stmt.setString(6, password);
 
-	        int rowsAffected = stmt.executeUpdate();
-	        if (rowsAffected > 0) {
-	            System.out.println("Utilisateur ajouté avec succès !");
-	        } else {
-	            System.out.println("Échec de l'ajout de l'utilisateur.");
-	        }
-	    }
+	public static void readUserId(Connection conn, int id) throws SQLException {
+		String query = "SELECT * FROM Utilisateurs WHERE id = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(query)) {
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				int employeeNumber = rs.getInt("numeroEmploye");
+				String nom = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String email = rs.getString("email");
+				String login = rs.getString("login");
+				String password = rs.getString("motDePasse");
+
+				System.out.println("ID: " + id + ", Employee Number: " + employeeNumber + ", Nom: " + nom + ", Prénom: "
+						+ prenom + ", Email: " + email + ", Login: " + login + ", Mot de Passe: " + password);
+			} else {
+				System.out.println("Aucun utilisateur trouvé avec l'ID : " + id);
+			}
+		}
+	}
+
+	public static void addUser(Connection conn, int employeeNumber, String nom, String prenom, String email,
+			String login, String password) throws SQLException {
+		String query = "INSERT INTO Utilisateurs (numeroEmploye, nom, prenom, email, login, motDePasse) VALUES (?, ?, ?, ?, ?, ?)";
+		try (PreparedStatement stmt = conn.prepareStatement(query)) {
+			stmt.setInt(1, employeeNumber);
+			stmt.setString(2, nom);
+			stmt.setString(3, prenom);
+			stmt.setString(4, email);
+			stmt.setString(5, login);
+			stmt.setString(6, password);
+
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected > 0) {
+				System.out.println("Utilisateur ajouté avec succès !");
+			} else {
+				System.out.println("Échec de l'ajout de l'utilisateur.");
+			}
+		}
+	}
+
+	public static void modifUser(Connection conn, int id, int employeeNumber, String nom, String prenom, String email,
+			String login, String password) throws SQLException {
+		String query = "UPDATE Utilisateurs SET numeroEmploye = ?, nom = ?, prenom = ?, email = ?, login = ?, motDePasse = ? WHERE id = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(query)) {
+			stmt.setInt(1, employeeNumber);
+			stmt.setString(2, nom);
+			stmt.setString(3, prenom);
+			stmt.setString(4, email);
+			stmt.setString(5, login);
+			stmt.setString(6, password);
+			stmt.setInt(7, id);
+
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected > 0) {
+				System.out.println("Utilisateur d'id " + id + " modifié avec succès !");
+			} else {
+				System.out.println("Aucun utilisateur trouvé avec l'ID spécifié : " + id);
+			}
+		}
+	}
+
+	public static void deleteUser(Connection conn, int id) throws SQLException {
+		String query = "DELETE FROM Utilisateurs WHERE id = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(query)) {
+			stmt.setInt(1, id);
+
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected > 0) {
+				System.out.println("Utilisateur supprimé avec succès !");
+			} else {
+				System.out.println("Aucun utilisateur trouvé avec l'ID spécifié : " + id);
+			}
+		}
 	}
 }

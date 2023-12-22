@@ -65,8 +65,11 @@ public class MenuPrincipale {
             Entreprise.createDatabase(conn, DB_NAME);
             Entreprise.useDatabase(conn, DB_NAME);
             Entreprise.createTables(conn);
-            Entreprise.addUser(conn, 5, "Dujardin", "Jean", "email2@email.fr", "login2", "mdp2");
+            //Entreprise.addUser(conn, 7, "Garcia", "Etienne", "email3@email.fr", "login3", "mdp3");
+            //Entreprise.deleteUser(conn, 3);
+            //Entreprise.modifUser(conn, 1, 1, "Debril", "Thibault", "emalModifier@email.fr", "loginModifier", "mdp");
             Entreprise.readAllUsers(conn);
+            Entreprise.readUserId(conn, 1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
