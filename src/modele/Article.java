@@ -9,10 +9,10 @@ import java.io.Serializable;
 public class Article implements Serializable{
     private static final long serialVersionUID = 12346;
     private Integer id;
-    private String numeroArticle;
-    private Boolean acheter;
+    private Integer numeroArticle;
     private String nom;
     private String description;
+    private Boolean achat;
 
     public Article() {
     }
@@ -25,12 +25,12 @@ public class Article implements Serializable{
         return id;
     }
 
-    public String getNumeroArticle() {
+    public Integer getNumeroArticle() {
         return numeroArticle;
     }
 
-    public Boolean getAcheter() {
-        return acheter;
+    public Boolean getAchat() {
+        return achat;
     }
 
     public String getNom() {
@@ -45,12 +45,12 @@ public class Article implements Serializable{
         this.id = id;
     }
 
-    public void setNumeroArticle(String numeroArticle) {
+    public void setNumeroArticle(Integer numeroArticle) {
         this.numeroArticle = numeroArticle;
     }
 
-    public void setAcheter(Boolean acheter) {
-        this.acheter = acheter;
+    public void setAcheter(Boolean achat) {
+        this.achat = achat;
     }
 
     public void setNom(String nom) {

@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Fournisseur implements Serializable{
     private static final long serialVersionUID = 12345;
     private Integer id;
-    private String numeroFournisseur;
+    private Integer numeroFournisseur;
     private String nom;
     private String email;
     private String adresse;
@@ -25,7 +25,7 @@ public class Fournisseur implements Serializable{
         return id;
     }
 
-    public String getNumeroFournisseur() {
+    public Integer getNumeroFournisseur() {
         return numeroFournisseur;
     }
 
@@ -45,7 +45,7 @@ public class Fournisseur implements Serializable{
         this.id = id;
     }
 
-    public void setNumeroFournisseur(String numeroFournisseur) {
+    public void setNumeroFournisseur(Integer numeroFournisseur) {
         this.numeroFournisseur = numeroFournisseur;
     }
 
