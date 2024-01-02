@@ -9,6 +9,12 @@ import java.util.Scanner;
  * @author vincs
  */
 public class FournisseurAffiche {
+    /**
+     * 
+     * @param leFournisseur : le Fournisseur a afficher
+     * 
+     * Cette methode permet d'afficher les informations d'un fournisseur
+     */
     public static void afficherFournisseur(Fournisseur leFournisseur){
         System.out.println("ID: " + leFournisseur.getId() + 
                 ", Numero de Fournisseur: " + leFournisseur.getNumeroFournisseur() + 
@@ -17,6 +23,12 @@ public class FournisseurAffiche {
                 ", Adresse: " + leFournisseur.getAdresse());
     }
     
+    /**
+     * 
+     * @return Fournisseur
+     * 
+     * Cette methode retourne un fournisseur
+     */
     public static Fournisseur creerFournisseur(){
         Fournisseur leFournisseur = new Fournisseur();
         Scanner clavier = new Scanner(System.in);

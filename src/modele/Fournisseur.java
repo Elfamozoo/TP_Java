@@ -6,6 +6,13 @@ import java.io.Serializable;
  *
  * @author vincs
  */
+
+/**
+ * La class Fournisseur correspond aux fournisseurs de l'entreprise. 
+ * Ils ont un id, un numero unique, un nom, un email et une adresse.
+ * 
+ * Cette class comprant des getters, des setters et un constucteur vide.
+ */
 public class Fournisseur implements Serializable{
     private static final long serialVersionUID = 12345;
     private Integer id;
