@@ -22,7 +22,9 @@ public class test {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Entreprise.createDatabase(conn, DB_NAME);
             Entreprise.useDatabase(conn, DB_NAME);
+            Entreprise.createTables(conn);
             
             System.out.println();
             
@@ -38,7 +40,8 @@ public class test {
                     }
                 }
                 reponseAction = 9;
-            }
+            }            
+            conn.close();            
         }
         catch(ClassNotFoundException | SQLException e){
             System.out.println(e);
