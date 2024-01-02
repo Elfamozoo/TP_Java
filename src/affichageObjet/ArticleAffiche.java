@@ -41,18 +41,22 @@ public class ArticleAffiche {
         Article lArticle = new Article();
         Scanner clavier = new Scanner(System.in);
         
-        System.out.println("Numero de l'article : ");
-        lArticle.setNumeroArticle(clavier.nextInt());
+        System.out.print("Numero de l'article : ");
+        lArticle.setNumeroArticle(Integer.valueOf(clavier.nextLine()));
         
-        System.out.println("Nom de l'article : ");
-        lArticle.setNom(clavier.next());
+        System.out.print("Nom de l'article : ");
+        lArticle.setNom(clavier.nextLine());
         
-        System.out.println("Description de l'article : ");
-        lArticle.setDescription(clavier.next());
+        System.out.print("Description de l'article : ");
+        lArticle.setDescription(clavier.nextLine());
         
-        lArticle.setAcheter(Boolean.FALSE);
-        
-        System.out.println(lArticle.getDescription());
+        System.out.print("L'article est-t-il achete? ");
+        if("OUI".equals(clavier.nextLine().toUpperCase())){
+            lArticle.setAcheter(Boolean.TRUE);
+        }
+        else{
+            lArticle.setAcheter(Boolean.FALSE);
+        }
         
         return lArticle;
     }

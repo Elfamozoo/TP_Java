@@ -33,17 +33,17 @@ public class FournisseurAffiche {
         Fournisseur leFournisseur = new Fournisseur();
         Scanner clavier = new Scanner(System.in);
         
-        System.out.println("Numero du fournisseur : ");
-        leFournisseur.setNumeroFournisseur(clavier.nextInt());
+        System.out.print("Numero du fournisseur : ");
+        leFournisseur.setNumeroFournisseur(Integer.valueOf(clavier.nextLine()));
         
-        System.out.println("Nom du fournisseur : ");
-        leFournisseur.setNom(clavier.next());
+        System.out.print("Nom du fournisseur : ");
+        leFournisseur.setNom(clavier.nextLine());
         
-        System.out.println("Email du fournisseur : ");
-        leFournisseur.setEmail(clavier.next());
+        System.out.print("Email du fournisseur : ");
+        leFournisseur.setEmail(clavier.nextLine());
         
-        System.out.println("Adresse du fournisseur : ");
-        leFournisseur.setAdresse(clavier.next());
+        System.out.print("Adresse du fournisseur : ");
+        leFournisseur.setAdresse(clavier.nextLine());
         
         return leFournisseur;
     }
