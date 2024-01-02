@@ -28,7 +28,6 @@ public class ClientsAffiche {
         Clients client = new Clients();
         // Création d'un objet de type Scanner. Il sera utilisé pour récupérer les informations entrées par l'utilisateur.
         Scanner clavier = new Scanner(System.in);
-
         // On demande à l'utilisateur de rentrer les informations du client.
         System.out.println("Numero du client : ");
         client.setNumeroClient(clavier.nextInt());
@@ -44,7 +43,9 @@ public class ClientsAffiche {
 
         // Le clavier.next + clavier.nextLine permet de récupérer la ligne entière et non pas seulement le numero de la rue.
         System.out.println("Adresse du client : ");
-        client.setAdresse(clavier.next() + clavier.nextLine());
+        // Le clavier.nextLine() permets de vider le buffer et repartir sur la ligne suivante.
+        clavier.nextLine();
+        client.setAdresse(clavier.nextLine());
 
         // On retourne l'objet client.
         return client;
