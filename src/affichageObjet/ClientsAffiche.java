@@ -42,8 +42,9 @@ public class ClientsAffiche {
         System.out.println("Email du client : ");
         client.setEmail(clavier.next());
 
+        // Le clavier.next + clavier.nextLine permet de récupérer la ligne entière et non pas seulement le numero de la rue.
         System.out.println("Adresse du client : ");
-        client.setAdresse(clavier.next());
+        client.setAdresse(clavier.next() + clavier.nextLine());
 
         // On retourne l'objet client.
         return client;
