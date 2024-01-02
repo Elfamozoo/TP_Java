@@ -1,8 +1,5 @@
 package modele;
 
-// La table Clients contiendra les clients de l'entreprise. Ils ont un id, un numero unique,
-// un nom, un prenom, un email et une adresse.
-
 import java.io.Serial;
 import java.io.Serializable;
 
