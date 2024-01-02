@@ -13,6 +13,14 @@ import java.sql.SQLException;
  * @author vincs
  */
 public class ArticleService {
+    /**
+     * 
+     * @param conn : La connection a la bdd
+     * @throws SQLException 
+     * 
+     * Cette methode recupere les articles present dans la bdd 
+     * puis les affiches en utilisant la methode afficherArticle de ArticleAffiche 
+     */
     public static void afficheLesArticles(Connection conn) throws SQLException {
 	String query = "SELECT * FROM Articles";
         Article lArticle = new Article();
@@ -29,7 +37,18 @@ public class ArticleService {
             }
 	}
     }
-
+    
+    /**
+     * 
+     * @param conn : La connection a la bdd
+     * @param id (int) : l'id de l'article a afficher
+     * @throws SQLException
+     * 
+     * Cette methode prend en argument un id
+     * Puis, si un article qui porte cet id se trouve dans la bdd, 
+     * il s'affiche en utilisant la methode afficherArticle de ArticleAffiche 
+     * Sinon, un message d'erreur s'affiche
+     */
     public static void afficheArticle(Connection conn, int id) throws SQLException {
 	String query = "SELECT * FROM Articles WHERE id = ?";
         Article lArticle = new Article();
@@ -50,7 +69,15 @@ public class ArticleService {
             }
 	}
     }
-
+    
+    /**
+     * 
+     * @param conn : : La connection a la bdd
+     * @throws SQLException 
+     * 
+     * Cette methode appele la methode creerArticle de ArticleAffiche
+     * pour creer un Article qui sera ensuite ajouter dans la bdd
+     */
     public static void ajoutArticle(Connection conn) throws SQLException {
 	String query = "INSERT INTO Articles (numeroArticle, nom, description, achat) VALUES (?, ?, ?, ?)";
 	Article lArticle = ArticleAffiche.creerArticle();
@@ -69,6 +96,18 @@ public class ArticleService {
 	}
     }
 
+    /**
+     * 
+     * @param conn : La connection a la bdd
+     * @param id (int) : l'id de l'article a afficher
+     * @throws SQLException 
+     * 
+     * Cette methode prend en argument un id
+     * Puis, si un article qui porte cet id se trouve dans la bdd, 
+     * Cette methode appele la methode creerArticle de ArticleAffiche
+     * pour creer un nouvelle Article qui celui se trouvant la bdd a l'id entre en argument
+     * Sinon, un message d'erreur s'affiche
+     */
     public static void modifieArticle(Connection conn, int id) throws SQLException {
 	String query = "UPDATE Articles SET numeroArticle = ?, nom = ?, description = ?, achat = ? WHERE id = ?";
 	Article lArticle = ArticleAffiche.creerArticle();
@@ -88,6 +127,17 @@ public class ArticleService {
 	}
     }
 
+    /**
+     * 
+     * @param conn : La connection a la bdd
+     * @param id (int) : l'id de l'article a afficher
+     * @throws SQLException 
+     * 
+     * Cette methode prend en argument un id
+     * Puis, si un article qui porte cet id se trouve dans la bdd, 
+     * Cette methode le supprime de la bdd
+     * Sinon, un message d'erreur s'affiche
+     */
     public static void supprimeArticle(Connection conn, int id) throws SQLException {
 	String query = "DELETE FROM Articles WHERE id = ?";
 	try (PreparedStatement stmt = conn.prepareStatement(query)) {

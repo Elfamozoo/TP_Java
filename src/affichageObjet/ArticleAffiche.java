@@ -9,9 +9,15 @@ import java.util.Scanner;
  * @author vincs
  */
 public class ArticleAffiche {
+    /**
+     * 
+     * @param lArticle : l'Article a afficher
+     * 
+     * Cette methode permet d'afficher les informations d'un article
+     */
     public static void afficherArticle(Article lArticle){
-        String achat;
-        
+        String achat; 
+        //Pour eviter d'afficher true ou false
         if(lArticle.getAchat()){
             achat = "Oui";
         }else{
@@ -25,6 +31,12 @@ public class ArticleAffiche {
                 ", Acheter: " + achat);
     }
     
+    /**
+     * 
+     * @return Article
+     * 
+     * Cette methode retourne un article
+     */
     public static Article creerArticle(){
         Article lArticle = new Article();
         Scanner clavier = new Scanner(System.in);

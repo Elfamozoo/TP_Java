@@ -6,6 +6,13 @@ import java.io.Serializable;
  *
  * @author vincs
  */
+
+/**
+ * La class Article correspond aux articles de l'entreprise. 
+ * Ils ont un id, un numero unique, un nom, une description et un etat indiquant si ils sont acheter ou non.
+ * 
+ * Cette class comprant des getters, des setters et un constucteur vide.
+ */
 public class Article implements Serializable{
     private static final long serialVersionUID = 12346;
     private Integer id;
