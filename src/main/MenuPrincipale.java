@@ -17,7 +17,7 @@
  * Connectez-vous � la BDD et cr�er les tables de la BDD si elles n'existent pas.
  * Ces tables sont : Utilisateurs, Clients, Fournisseurs et Articles.
  * <p>
- * La table Utilisateurs correpond aux utilisateurs du programme dans une entreprise.
+ * La table Utilisateurs correspond aux utilisateurs du programme dans une entreprise.
  * Les Utilisateurs ont un id, un numero d'employ� unique, un nom, un prenom, un email,
  * un login et un mot de passe.
  * <p>
@@ -38,13 +38,13 @@
  * la suppression.
  * <p>
  * Pour les menus, faites un premier menu pour choisir la table sur laquelle on veut faire une op�ration.
- * Puis un sous-menu corresondant aux diff�rentes op�rations.
+ * Puis un sous-menu correspondant aux diff�rentes op�rations.
  * <p>
- * Faites-les controles necesaires sur les op�rations pour eviter les incoh�rences et les erreur SQL.
+ * Faites-les controles necesaires sur les op�rations pour eviter les incoherences et les erreurs SQL.
  * <p>
  * Tous les champs de toutes les tables sont obligatoires.
  * <p>
- * Faire les javadoc pour toutes les m�thodes et classes.
+ * Faire les javadoc pour toutes les methodes et classes.
  */
 
 package main;

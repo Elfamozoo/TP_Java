@@ -1,17 +1,21 @@
 package modele;
 
-// La table Clients contiendra les clients de l'entreprise. Ils ont un id, un num�ro unique,
+// La table Clients contiendra les clients de l'entreprise. Ils ont un id, un numero unique,
 // un nom, un prenom, un email et une adresse.
 
 import java.io.Serial;
 import java.io.Serializable;
 
-/**
- * La classe Clients correspond aux clients de l'entreprise. Ils ont un id, un numero unique, un nom, un prenom, un email et une adresse.
- */
+
+// La classe Clients correspond aux clients de l'entreprise. Ils ont un id, un numero unique, un nom, un prenom, un email et une adresse.
+// Elle implémente Serializable pour pouvoir être sérialisée.
 public class Clients implements Serializable {
+
+    // La variable serialVersionUID est utilisée lors de la sérialisation pour vérifier que l'objet sérialisé correspond bien à la classe.
     @Serial
     private static final long serialVersionUID = -1912226135221L;
+
+    // Les variables de la classe Clients.
     private int id;
     private int numeroClient;
 
@@ -23,6 +27,11 @@ public class Clients implements Serializable {
 
     private String adresse;
 
+    // Le constructeur de la classe Clients.
+    public Clients() {
+    }
+
+    // Les getters et setters de la classe Clients.
     public int getId() {
         return id;
     }

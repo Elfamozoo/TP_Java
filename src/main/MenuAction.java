@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MenuAction {
     public static Integer afficheAction(){
         Scanner clavier = new Scanner(System.in);
-        Integer reponse;
+        int reponse;
         System.out.println("Entrer le numero de l'action voulue : (Entrer 0 pour revenir en arriere)");
         System.out.println("1 - Lecture complete de la table");
         System.out.println("2 - Lecture d'un enregistrement selon l'id");

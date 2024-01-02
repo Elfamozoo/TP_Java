@@ -25,26 +25,26 @@ public class test {
             Entreprise.createDatabase(conn, DB_NAME);
             Entreprise.useDatabase(conn, DB_NAME);
             Entreprise.createTables(conn);
-            
+
             System.out.println();
-            
+
             Integer reponseTable = 9;
             Integer reponseAction  = 9;
-            
+
             while (reponseTable != 0) {
                 reponseTable = MenuTable.afficheTable();
-                if(reponseTable != 0){ 
+                if(reponseTable != 0){
                     while (reponseAction != 0){
                         reponseAction = MenuAction.afficheAction();
                         ResultAction.afficheResult(conn, reponseTable, reponseAction);
                     }
                 }
                 reponseAction = 9;
-            }            
-            conn.close();            
+            }
+            conn.close();
         }
         catch(ClassNotFoundException | SQLException e){
             System.out.println(e);
-        }   
+        }
     }
 }
