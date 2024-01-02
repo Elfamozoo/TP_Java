@@ -99,13 +99,13 @@ public class ArticleService {
     /**
      * 
      * @param conn : La connection a la bdd
-     * @param id (int) : l'id de l'article a afficher
+     * @param id (int) : l'id de l'article a modifier
      * @throws SQLException 
      * 
      * Cette methode prend en argument un id
      * Puis, si un article qui porte cet id se trouve dans la bdd, 
      * Cette methode appele la methode creerArticle de ArticleAffiche
-     * pour creer un nouvelle Article qui celui se trouvant la bdd a l'id entre en argument
+     * pour creer un nouvel Article qui remplacera celui se trouvant la bdd ayant l'id entre en argument
      * Sinon, un message d'erreur s'affiche
      */
     public static void modifieArticle(Connection conn, int id) throws SQLException {
@@ -130,7 +130,7 @@ public class ArticleService {
     /**
      * 
      * @param conn : La connection a la bdd
-     * @param id (int) : l'id de l'article a afficher
+     * @param id (int) : l'id de l'article a supprimer
      * @throws SQLException 
      * 
      * Cette methode prend en argument un id
