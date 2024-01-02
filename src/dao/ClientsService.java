@@ -6,7 +6,6 @@ import modele.Clients;
 import java.sql.*;
 
 /**
- *
  * @author Illyes
  */
 // La classe ClientsService permet d'effectuer des requêtes sur la table Clients de la base de données.
@@ -31,7 +30,8 @@ public class ClientsService {
                 lesClients.setPrenom(rs.getString("prenom"));
                 lesClients.setEmail(rs.getString("email"));
                 lesClients.setAdresse(rs.getString("adresse"));
-                System.out.println(lesClients);
+                // On affiche les informations du client.
+                ClientsAffiche.afficherClient(lesClients);
             }
         }
     }
@@ -56,7 +56,8 @@ public class ClientsService {
                 leClient.setPrenom(rs.getString("prenom"));
                 leClient.setEmail(rs.getString("email"));
                 leClient.setAdresse(rs.getString("adresse"));
-                System.out.println(leClient);
+                // On affiche les informations du client.
+                ClientsAffiche.afficherClient(leClient);
             } else {
                 // Si le résultat ne contient pas de ligne, on affiche un message d'erreur.
                 System.out.println("Aucun client trouve avec l'ID : " + id);

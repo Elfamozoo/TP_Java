@@ -3,10 +3,12 @@ package modele;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ *
+ * @author Illyes
+ */
 // La classe Utilisateurs correspond aux utilisateurs de l'application. Ils ont un id, un numero unique, un nom, un prenom, un email, un login et un mot de passe.
 // Elle implémente Serializable pour pouvoir être sérialisée.
-
-
 public class Utilisateurs implements Serializable {
     @Serial
     private static final long serialVersionUID = -191245848552L;
