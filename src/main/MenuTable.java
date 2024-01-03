@@ -7,6 +7,13 @@ import java.util.Scanner;
  * @author vincs
  */
 public class MenuTable {
+    /**
+     * 
+     * @return Integer
+     * 
+     * Cette methode affiche la liste des Tables et 
+     * retourne le numero correspondant a la table selectionne
+     */
     public static Integer afficheTable(){
         Scanner clavier = new Scanner(System.in);
         int reponse;

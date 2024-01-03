@@ -7,6 +7,13 @@ import java.util.Scanner;
  * @author vincs
  */
 public class MenuAction {
+    /**
+     * 
+     * @return Integer
+     * 
+     * Cette methode affiche la liste des Actions et 
+     * retourne le numero correspondant a l'action selectionne
+     */
     public static Integer afficheAction(){
         Scanner clavier = new Scanner(System.in);
         int reponse;
