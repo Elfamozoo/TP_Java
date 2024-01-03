@@ -30,8 +30,8 @@ public class Entreprise {
             // On utilise le mot clé AUTO_INCREMENT pour que l'ID soit généré automatiquement.
             // On utilise le mot clé PRIMARY KEY pour définir l'ID comme clé primaire.
             // On utilise le mot clé NOT NULL pour définir que les champs ne peuvent pas être vides.
-            // On utilise le mot clé VARCHAR pour définir le type de données des champs.
-            // On utilise le mot clé BOOLEAN pour définir le type de données des champs.
+            // On utilise le mot clé VARCHAR ainsi que sa limite de caractères entre parentheses.
+            // On utilise le mot clé BOOLEAN pour définir le type de données du champ achat.
             stmt.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS Utilisateurs (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, numeroEmploye INT NOT NULL, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, login VARCHAR(50) NOT NULL, motDePasse VARCHAR(50) NOT NULL)");
             stmt.executeUpdate(

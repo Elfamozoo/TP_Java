@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class FournisseurAffiche {
     /**
      * 
-     * @param leFournisseur : le Fournisseur a afficher
+     * @param leFournisseur : le Fournisseur à afficher
      * 
      * Cette methode permet d'afficher les informations d'un fournisseur
      */

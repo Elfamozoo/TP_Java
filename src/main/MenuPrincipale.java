@@ -62,7 +62,7 @@ public class MenuPrincipale {
     private static final String DB_PASSWORD = "";
 
     public static void main(String[] args) {
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             Entreprise.createDatabase(conn, DB_NAME);

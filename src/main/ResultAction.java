@@ -118,19 +118,17 @@ public class ResultAction {
                         System.out.println("Entrer l'Id : ");
                         UtilisateurService.afficheUtilisateur(conn, clavier.nextInt());
                     }
-                    // Thibaut a faire par rapport a ton utilisateurService
                     case 3 -> {
-                        //UtilisateurService.ajoutUtilisateur(conn);
+                        UtilisateurService.ajoutUtilisateur(conn);
                     }
-                    // Thibaut a faire par rapport a ton utilisateurService
                     case 4 -> {
                         System.out.println("Entrer l'Id : ");
-                        // UtilisateurService.modifieUtilisateur(conn);
+                        UtilisateurService.modifUtilisateur(conn, clavier.nextInt());
                     }
 
                     case 5 -> {
                         System.out.println("Entrer l'Id : ");
-                        UtilisateurService.supprimeUtilisateur(conn,clavier.nextInt());
+                        UtilisateurService.supprimeUtilisateur(conn, clavier.nextInt());
                     }
 
                     default -> System.out.println("Choix d'action incorrect");

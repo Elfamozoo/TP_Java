@@ -33,14 +33,15 @@ public class UtilisateurAffiche {
         utilisateur.setPrenom(clavier.next());
 
         System.out.println("Email : ");
-        String email = clavier.nextLine();
+        String email = clavier.next();
+
         while (!Verif.verifEmail(email)) {/*Appelle de la methode verifEmail de Verif
             Pour verifier que l'email est valide
             Tant qu'il est invalide, on doit le retaper*/
             System.out.println("L'email entre n'est pas valide. Réessayer : ");
-            email = clavier.nextLine();
+            email = clavier.next();
         }
-        utilisateur.setEmail(clavier.next());
+        utilisateur.setEmail(email);
 
         System.out.println("Login : ");
         utilisateur.setLogin(clavier.next());

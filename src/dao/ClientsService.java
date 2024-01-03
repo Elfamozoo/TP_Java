@@ -115,7 +115,6 @@ public class ClientsService {
             // Si l'id ne correspond à aucun client, on affiche un message d'erreur.
             System.out.println("Aucun client trouve avec l'ID : " + id);
         }
-
     }
 
 
