@@ -93,7 +93,7 @@ public class ClientsService {
         // La requête SQL pour modifier un client dans la table Clients. Elle est stockée dans une variable de type String.
         String query = "UPDATE Clients WHERE id = ? SET numeroClient = ?, nom = ?, prenom = ?, email = ?, adresse = ?";
         // Si l'id ne correspond à aucun client, on affiche un message d'erreur. Sinon, on continue.
-        if (ClientsService.verifId(conn, id)) {
+        if (Verif.verifId(conn, id, "Clients")) {
             // Création d'un objet de type Clients. Il sera utilisé pour stocker les informations du client à modifier.
             Clients leClient = ClientsAffiche.creerClient();
             // Création d'un objet de type PreparedStatement. Il sera utilisé pour exécuter la requête SQL.
@@ -124,7 +124,7 @@ public class ClientsService {
         // La requête SQL pour supprimer un client dans la table Clients. Elle est stockée dans une variable de type String.
         String query = "DELETE FROM Clients WHERE id = ?";
         // Si l'id ne correspond à aucun client, on affiche un message d'erreur. Sinon, on continue.
-        if (ClientsService.verifId(conn, id)) {
+        if (Verif.verifId(conn, id, "Clients")) {
             // Création d'un objet de type PreparedStatement. Il sera utilisé pour exécuter la requête SQL.
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 // On remplace le ? de la requête SQL par l'ID du client à supprimer.
@@ -138,21 +138,6 @@ public class ClientsService {
         } else {
             // Si l'id ne correspond à aucun client, on affiche un message d'erreur.
             System.out.println("Aucun client trouve avec l'ID : " + id);
-        }
-    }
-
-    // La fonction verifId() permet de vérifier si un client existe dans la table Clients. Elle prend en paramètre une connexion à la base de données et l'ID du client à vérifier.
-    public static boolean verifId(Connection conn, int id) throws SQLException {
-        // La requête SQL pour vérifier si un client existe dans la table Clients. Elle est stockée dans une variable de type String.
-        String query = "SELECT 1 FROM Clients WHERE id = ?";
-        // Création d'un objet de type PreparedStatement. Il sera utilisé pour exécuter la requête SQL.
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            // On remplace le ? de la requête SQL par l'ID du client à vérifier.
-            stmt.setInt(1, id);
-            // Exécution de la requête SQL. Le résultat est stocké dans un objet de type ResultSet.
-            ResultSet rs = stmt.executeQuery();
-            // Si le résultat contient une ligne, on retourne true. Sinon, on retourne false.
-            return rs.next();
         }
     }
 
