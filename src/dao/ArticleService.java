@@ -96,7 +96,11 @@ public class ArticleService {
             stmt.executeUpdate();//Execution du statement
             
             System.out.println("Article ajoute avec succes !");
-	}
+	} 
+        catch (SQLException e) {
+            // Si une erreur se produit, on affiche un message d'erreur.
+            System.out.println("Erreur lors de l'ajout de l'article : " + e.getMessage());
+        }
     }
 
     /**
@@ -131,6 +135,10 @@ public class ArticleService {
                 stmt.executeUpdate();//Execution du statement
                 
 		System.out.println("Article d'id " + id + " modifie avec succes !");
+            } 
+            catch (SQLException e) {
+                // Si une erreur se produit, on affiche un message d'erreur.
+                System.out.println("Erreur lors de la modification de l'article : " + e.getMessage());
             }
         } 
         else {//Sinon, un message d'erreur s'affiche
@@ -160,6 +168,10 @@ public class ArticleService {
                 stmt.executeUpdate();//Execution du statement
                 
                 System.out.println("Article supprime avec succes !");
+            } 
+            catch (SQLException e) {
+                // Si une erreur se produit, on affiche un message d'erreur.
+                System.out.println("Erreur lors de la suppression de l'article : " + e.getMessage());
             }
         }
         else {//Sinon, un message d'erreur s'affiche

@@ -96,7 +96,11 @@ public class FournisseurService {
             stmt.executeUpdate();//Execution du statement
             
             System.out.println("Fournisseur ajoute avec succes !");
-	}
+	} 
+        catch (SQLException e) {
+            // Si une erreur se produit, on affiche un message d'erreur.
+            System.out.println("Erreur lors de l'ajout du fournisseur : " + e.getMessage());
+        }
     }
 
     /**
@@ -131,6 +135,10 @@ public class FournisseurService {
                 stmt.executeUpdate();//Execution du statement
                 
 		System.out.println("Fournisseur d'id " + id + " modifie avec succes !");
+            } 
+            catch (SQLException e) {
+                // Si une erreur se produit, on affiche un message d'erreur.
+                System.out.println("Erreur lors de la modification du fournisseur : " + e.getMessage());
             }
         } 
         else {//Sinon, un message d'erreur s'affiche
@@ -160,6 +168,10 @@ public class FournisseurService {
                 stmt.executeUpdate();//Execution du statement
                 
                 System.out.println("Fournisseur supprime avec succes !");
+            } 
+            catch (SQLException e) {
+                // Si une erreur se produit, on affiche un message d'erreur.
+                System.out.println("Erreur lors de la suppression du fournisseur : " + e.getMessage());
             }
         }
         else {//Sinon, un message d'erreur s'affiche
