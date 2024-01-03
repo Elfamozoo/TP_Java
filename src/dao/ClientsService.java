@@ -82,6 +82,8 @@ public class ClientsService {
             stmt.setString(5, leClient.getAdresse());
             // Exécution de la requête SQL.
             stmt.executeUpdate();
+
+            System.out.println("Ajout du client reussi !");
         } catch (SQLException e) {
             // Si une erreur se produit, on affiche un message d'erreur.
             System.out.println("Erreur lors de l'ajout du client : " + e.getMessage());
@@ -107,6 +109,7 @@ public class ClientsService {
                 stmt.setInt(6, id);
                 // Exécution de la requête SQL.
                 stmt.executeUpdate();
+                System.out.println("Modification du client reussi !");
             } catch (SQLException e) {
                 // Si une erreur se produit, on affiche un message d'erreur.
                 System.out.println("Erreur lors de la modification du client : " + e.getMessage());
@@ -130,6 +133,7 @@ public class ClientsService {
                 stmt.setInt(1, id);
                 // Exécution de la requête SQL.
                 stmt.executeUpdate();
+                System.out.println("Suppression du client reussi !");
             } catch (SQLException e) {
                 // Si une erreur se produit, on affiche un message d'erreur.
                 System.out.println("Erreur lors de la suppression du client : " + e.getMessage());

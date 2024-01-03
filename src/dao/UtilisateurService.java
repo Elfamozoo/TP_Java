@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * @author Thibaut et Illyes
+ */
 public class UtilisateurService {
     // Méthode pour afficher tous les utilisateurs
     public static void afficheTousLesUtilisateurs(Connection conn) throws SQLException {
@@ -71,6 +73,7 @@ public class UtilisateurService {
             stmt.setString(6, utilisateur.getPassword());
             // Exécution de la requête SQL.
             stmt.executeUpdate();
+            System.out.println("Ajout de l'utilisateur reussi !");
         } catch (SQLException e) {
             // Si une erreur se produit, on affiche un message d'erreur.
             System.out.println("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
@@ -97,6 +100,7 @@ public class UtilisateurService {
                 stmt.setInt(7, id);
                 // Exécution de la requête SQL.
                 stmt.executeUpdate();
+                System.out.println("Modification de l'utilisateur reussi !");
             } catch (SQLException e) {
                 // Si une erreur se produit, on affiche un message d'erreur.
                 System.out.println("Erreur lors de la modification de l'utilisateur : " + e.getMessage());
