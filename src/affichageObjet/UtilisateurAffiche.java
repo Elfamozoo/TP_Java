@@ -1,11 +1,12 @@
 package affichageObjet;
 
+import dao.Verif;
 import modele.Utilisateurs;
 
 import java.util.Scanner;
 
 public class UtilisateurAffiche {
-	 // Méthode pour afficher les détails d'un utilisateur
+    // Méthode pour afficher les détails d'un utilisateur
     public static void afficherUtilisateur(Utilisateurs utilisateur) {
         System.out.println("ID: " + utilisateur.getId() +
                 ", Numéro Employé: " + utilisateur.getNumeroEmploye() +
@@ -16,12 +17,12 @@ public class UtilisateurAffiche {
                 ", Mot de passe: " + utilisateur.getPassword());
     }
 
- // Méthode pour créer un nouvel utilisateur à partir de la saisie utilisateur
+    // Méthode pour créer un nouvel utilisateur à partir de la saisie utilisateur
     public static Utilisateurs creerUtilisateur() {
         Utilisateurs utilisateur = new Utilisateurs();
         Scanner clavier = new Scanner(System.in);
 
-     // Demande à l'utilisateur de saisir les informations pour créer un nouvel utilisateur
+        // Demande à l'utilisateur de saisir les informations pour créer un nouvel utilisateur
         System.out.println("Numéro Employé : ");
         utilisateur.setNumeroEmploye(clavier.nextInt());
 
@@ -32,6 +33,13 @@ public class UtilisateurAffiche {
         utilisateur.setPrenom(clavier.next());
 
         System.out.println("Email : ");
+        String email = clavier.nextLine();
+        while (!Verif.verifEmail(email)) {/*Appelle de la methode verifEmail de Verif
+            Pour verifier que l'email est valide
+            Tant qu'il est invalide, on doit le retaper*/
+            System.out.println("L'email entre n'est pas valide. Réessayer : ");
+            email = clavier.nextLine();
+        }
         utilisateur.setEmail(clavier.next());
 
         System.out.println("Login : ");

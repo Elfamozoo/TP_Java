@@ -31,8 +31,9 @@ public class Verif {
     // La fonction verifEmail() permet de verifier si les données entrées durant la demande d'email de la table Clients correspond bien au format d'un Email.
     // Vérifie si l'argument email est une chaîne qui respecte un format d'e-mail basique, elle renvoie true si l'e-mail est conforme à ce format, sinon false.
     public static boolean verifEmail(String email) {
-        // Le regex utilisé est basique et sert juste à verifier s'il n'y a pas d'espaces blancs (\S) avant et après un @.
-        String regex = "^\\S+@\\S+$";
+        // Cette regex s'assure qu'il y a au moins un caractère non-espace avant et après le "@",
+        // et également au moins un caractère non-espace après le point qui suit le "@".
+        String regex = "^\\S+@\\S+\\.\\S+$";
         // Pattern.matches est utilisée pour vérifier si la chaîne email correspond à l'expression régulière définie par regex.
         // Pattern est une classe JAVA pour définir un modèle afin de pouvoir ensuite le comparer avec matches qui vont comparer ici
         // regex avec l'input rentré plus tard durant le scanner.
