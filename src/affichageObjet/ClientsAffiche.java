@@ -1,5 +1,6 @@
 package affichageObjet;
 
+import dao.Verif;
 import modele.Clients;
 
 import java.util.Scanner;
@@ -39,9 +40,18 @@ public class ClientsAffiche {
         client.setPrenom(clavier.next());
 
         System.out.println("Email du client : ");
-        client.setEmail(clavier.next());
+        // Création d'une variable email de type String qui va stocker l'adresse mail qui sera saisie.
+        String email = clavier.next();
 
-        // Le clavier.next + clavier.nextLine permet de récupérer la ligne entière et non pas seulement le numero de la rue.
+        // Boucle while jusqu'à ce qu'une adresse e-mail valide soit saisie (!Verif.verifEmail(email) veut dire false).
+        while (!Verif.verifEmail(email)) {
+            System.out.println("L'email entré n'est pas valide. Réessayer : ");
+            email = clavier.next();
+        }
+
+        client.setEmail(email);
+
+
         System.out.println("Adresse du client : ");
         // Le clavier.nextLine() permets de vider le buffer et repartir sur la ligne suivante.
         clavier.nextLine();

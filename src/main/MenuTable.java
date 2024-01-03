@@ -14,6 +14,7 @@ public class MenuTable {
         System.out.println("1 - Fournisseurs");
         System.out.println("2 - Articles");
         System.out.println("3 - Clients");
+        System.out.println("4 - Utilisateurs");
         reponse = clavier.nextInt();
         return reponse;
     }
