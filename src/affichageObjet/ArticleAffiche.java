@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ArticleAffiche {
     /**
      * 
-     * @param lArticle : l'Article a afficher
+     * @param lArticle : l'Article à afficher
      * 
      * Cette methode permet d'afficher les informations d'un article
      */
