@@ -5,6 +5,7 @@ import modele.Utilisateurs;
 import java.util.Scanner;
 
 public class UtilisateurAffiche {
+	 // Méthode pour afficher les détails d'un utilisateur
     public static void afficherUtilisateur(Utilisateurs utilisateur) {
         System.out.println("ID: " + utilisateur.getId() +
                 ", Numéro Employé: " + utilisateur.getNumeroEmploye() +
@@ -15,10 +16,12 @@ public class UtilisateurAffiche {
                 ", Mot de passe: " + utilisateur.getPassword());
     }
 
+ // Méthode pour créer un nouvel utilisateur à partir de la saisie utilisateur
     public static Utilisateurs creerUtilisateur() {
         Utilisateurs utilisateur = new Utilisateurs();
         Scanner clavier = new Scanner(System.in);
 
+     // Demande à l'utilisateur de saisir les informations pour créer un nouvel utilisateur
         System.out.println("Numéro Employé : ");
         utilisateur.setNumeroEmploye(clavier.nextInt());
 

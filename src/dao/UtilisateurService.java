@@ -9,12 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UtilisateurService {
+	// Méthode pour afficher tous les utilisateurs
     public static void afficheTousLesUtilisateurs(Connection conn) throws SQLException {
         String query = "SELECT * FROM Utilisateurs";
-        Utilisateurs utilisateur = new Utilisateurs();
+        Utilisateurs utilisateur = new Utilisateurs(); // Création d'une instance d'Utilisateurs
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+            	// Récupération des données de la base et assignation à l'objet Utilisateurs
                 utilisateur.setId(rs.getInt("id"));
                 utilisateur.setNumeroEmploye(rs.getInt("numeroEmploye"));
                 utilisateur.setNom(rs.getString("nom"));
@@ -28,6 +30,7 @@ public class UtilisateurService {
         }
     }
 
+ // Méthode pour afficher un utilisateur en fonction de son ID
     public static void afficheUtilisateur(Connection conn, int id) throws SQLException {
         String query = "SELECT * FROM Utilisateurs WHERE id = ?";
         Utilisateurs utilisateur = new Utilisateurs();
@@ -50,7 +53,8 @@ public class UtilisateurService {
             }
         }
     }
-
+    
+ // Méthode pour ajouter un nouvel utilisateur
     public static void ajoutUtilisateur(Connection conn, Utilisateurs utilisateur) throws SQLException {
         String query = "INSERT INTO Utilisateurs (numeroEmploye, nom, prenom, email, login, motDePasse) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -70,6 +74,7 @@ public class UtilisateurService {
         }
     }
 
+ // Méthode pour modifier un utilisateur existant en fonction de son ID
     public static void modifieUtilisateur(Connection conn, int id, Utilisateurs utilisateur) throws SQLException {
         String query = "UPDATE Utilisateurs SET numeroEmploye = ?, nom = ?, prenom = ?, email = ?, login = ?, motDePasse = ? WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -90,6 +95,7 @@ public class UtilisateurService {
         }
     }
 
+ // Méthode pour supprimer un utilisateur en fonction de son ID
     public static void supprimeUtilisateur(Connection conn, int id) throws SQLException {
         String query = "DELETE FROM Utilisateurs WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
