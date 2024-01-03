@@ -3,6 +3,7 @@ package main;
 import dao.ArticleService;
 import dao.ClientsService;
 import dao.FournisseurService;
+import dao.UtilisateurService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -101,6 +102,35 @@ public class ResultAction {
                     case 5 -> {
                         System.out.println("Entrer l'Id : ");
                         ClientsService.supprimeClient(conn, clavier.nextInt());
+                    }
+
+                    default -> System.out.println("Choix d'action incorrect");
+                }
+            }
+
+            case 4 -> {
+                switch (numAction) {
+                    case 0 -> System.out.println("Vous avez quitte la table");
+
+                    case 1 -> UtilisateurService.afficheTousLesUtilisateurs(conn);
+
+                    case 2 -> {
+                        System.out.println("Entrer l'Id : ");
+                        UtilisateurService.afficheUtilisateur(conn, clavier.nextInt());
+                    }
+                    // Thibaut a faire par rapport a ton utilisateurService
+                    case 3 -> {
+                        //UtilisateurService.ajoutUtilisateur(conn);
+                    }
+                    // Thibaut a faire par rapport a ton utilisateurService
+                    case 4 -> {
+                        System.out.println("Entrer l'Id : ");
+                        // UtilisateurService.modifieUtilisateur(conn);
+                    }
+
+                    case 5 -> {
+                        System.out.println("Entrer l'Id : ");
+                        UtilisateurService.supprimeUtilisateur(conn,clavier.nextInt());
                     }
 
                     default -> System.out.println("Choix d'action incorrect");

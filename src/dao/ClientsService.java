@@ -91,7 +91,7 @@ public class ClientsService {
     // La fonction modifClient() permet de modifier un client dans la table Clients. Elle prend en paramètre une connexion à la base de données et l'ID du client à modifier.
     public static void modifClient(Connection conn, int id) throws SQLException {
         // La requête SQL pour modifier un client dans la table Clients. Elle est stockée dans une variable de type String.
-        String query = "UPDATE Clients WHERE id = ? SET numeroClient = ?, nom = ?, prenom = ?, email = ?, adresse = ?";
+        String query = "UPDATE Clients SET numeroClient = ?, nom = ?, prenom = ?, email = ?, adresse = ? WHERE id = ?";
         // Si l'id ne correspond à aucun client, on affiche un message d'erreur. Sinon, on continue.
         if (Verif.verifId(conn, id, "Clients")) {
             // Création d'un objet de type Clients. Il sera utilisé pour stocker les informations du client à modifier.
