@@ -16,7 +16,7 @@ public class ArticleAffiche {
      * Cette methode permet d'afficher les informations d'un article
      */
     public static void afficherArticle(Article lArticle){
-        String achat = (lArticle.getAchat()) ? "Oui" : "Non";; 
+        String achat = (lArticle.getAchat()) ? "Oui" : "Non"; 
         /* Pour eviter d'afficher true ou false
         Si achat == true, on affiche Oui (l'article est acheter)
         Sinon on affiche Non */
@@ -48,12 +48,8 @@ public class ArticleAffiche {
         lArticle.setDescription(clavier.nextLine());
         
         System.out.print("L'article est-t-il achete? ");
-        if("OUI".equals(clavier.nextLine().toUpperCase())){
-            lArticle.setAcheter(Boolean.TRUE);
-        }
-        else{
-            lArticle.setAcheter(Boolean.FALSE);
-        }
+        Boolean achat = ("OUI".equals(clavier.nextLine().toUpperCase())) ? Boolean.TRUE : Boolean.FALSE; 
+        lArticle.setAcheter(achat);
         
         return lArticle;
     }
