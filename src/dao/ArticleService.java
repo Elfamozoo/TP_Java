@@ -22,11 +22,12 @@ public class ArticleService {
      * puis les affiches en utilisant la methode afficherArticle de ArticleAffiche 
      */
     public static void afficheLesArticles(Connection conn) throws SQLException {
-	String query = "SELECT * FROM Articles";
-        Article lArticle = new Article();
-	try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+	String query = "SELECT * FROM Articles"; //Requete sql
+        Article lArticle = new Article(); //Objet de type Article pour stocker les informations
+	try (PreparedStatement stmt = conn.prepareStatement(query)) {//Statement utilisant la requete
+            ResultSet rs = stmt.executeQuery();//Execution du statement
+            while (rs.next()) {//Tant qu'il y a des lignes, lArticle recupere les informations
+                //(1 seul à la fois)
                 lArticle.setId(rs.getInt("id"));
                 lArticle.setNumeroArticle(rs.getInt("numeroArticle"));
                 lArticle.setNom(rs.getString("nom"));
@@ -34,6 +35,8 @@ public class ArticleService {
                 lArticle.setAcheter(rs.getBoolean("achat"));
                 
                 ArticleAffiche.afficherArticle(lArticle);
+                //Appele de la methode afficherArticle de ArticleAffiche pour afficher
+                //les informations de chaque Article ligne par ligne
             }
 	}
     }
@@ -50,13 +53,13 @@ public class ArticleService {
      * Sinon, un message d'erreur s'affiche
      */
     public static void afficheArticle(Connection conn, int id) throws SQLException {
-	String query = "SELECT * FROM Articles WHERE id = ?";
-        Article lArticle = new Article();
-	try (PreparedStatement stmt = conn.prepareStatement(query)) {
+	String query = "SELECT * FROM Articles WHERE id = ?";//Requete sql
+        Article lArticle = new Article();//Objet de type Article pour stocker les informations
+	try (PreparedStatement stmt = conn.prepareStatement(query)) {//Statement utilisant la requete
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();//Execution du statement
 
-            if (rs.next()) {
+            if (rs.next()) {//Si il y une ligne (et donc un enregistrement) lArticle recupere les informations
                 lArticle.setId(id);
                 lArticle.setNumeroArticle(rs.getInt("numeroArticle"));
                 lArticle.setNom(rs.getString("nom"));
@@ -64,7 +67,8 @@ public class ArticleService {
                 lArticle.setAcheter(rs.getBoolean("achat"));
                 
                 ArticleAffiche.afficherArticle(lArticle);
-            } else {
+                //Appele de la methode afficherArticle de ArticleAffiche pour afficher les informations de l'Article
+            } else {//Sinon, un message d'erreur s'affiche
 		System.out.println("Aucun article trouve avec l'ID : " + id);
             }
 	}
@@ -79,20 +83,19 @@ public class ArticleService {
      * pour creer un Article qui sera ensuite ajouter dans la bdd
      */
     public static void ajoutArticle(Connection conn) throws SQLException {
-	String query = "INSERT INTO Articles (numeroArticle, nom, description, achat) VALUES (?, ?, ?, ?)";
-	Article lArticle = ArticleAffiche.creerArticle();
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+	String query = "INSERT INTO Articles (numeroArticle, nom, description, achat) VALUES (?, ?, ?, ?)";//Requete sql
+	Article lArticle = ArticleAffiche.creerArticle();//Creation d'un Objet de type Article
+        //Par appele de la methode creerArticle de ArticleAffiche
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {//Statement utilisant la requete
+            //Reuperation des informations de larticle pour les ajouter dans la bdd grace au statement  
             stmt.setInt(1, lArticle.getNumeroArticle());
             stmt.setString(2, lArticle.getNom());
             stmt.setString(3, lArticle.getDescription());
             stmt.setBoolean(4, lArticle.getAchat());
 
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected > 0) {
-		System.out.println("Article ajoute avec succes !");
-            } else {
-		System.out.println("Echec de l'ajout de l'article.");
-            }
+            stmt.executeUpdate();//Execution du statement
+            
+            System.out.println("Article ajoute avec succes !");
 	}
     }
 
@@ -109,22 +112,30 @@ public class ArticleService {
      * Sinon, un message d'erreur s'affiche
      */
     public static void modifieArticle(Connection conn, int id) throws SQLException {
-	String query = "UPDATE Articles SET numeroArticle = ?, nom = ?, description = ?, achat = ? WHERE id = ?";
-	Article lArticle = ArticleAffiche.creerArticle();
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, lArticle.getNumeroArticle());
-            stmt.setString(2, lArticle.getNom());
-            stmt.setString(3, lArticle.getDescription());
-            stmt.setBoolean(4, lArticle.getAchat());
-            stmt.setInt(5, id);
-
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected > 0) {
+	String query = "UPDATE Articles SET numeroArticle = ?, nom = ?, description = ?, achat = ? WHERE id = ?";//Requete sql
+	
+        if (Verif.verifId(conn, id, "Articles")) {
+            /* Verification que le l'article existe grace a son id par appele de la methode verifId de Verif
+            Si l'article existe, on peut le modifier */
+            Article lArticle = ArticleAffiche.creerArticle();//Creation d'un Objet de type Article
+            //Ses informations remplaceront celles de l'enregistrement correspondant dans la bdd
+            
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {//Statement utilisant la requete
+            //Reuperation des informations de lArticle pour les remplacer dans la bdd grace au statement
+                stmt.setInt(1, lArticle.getNumeroArticle());
+                stmt.setString(2, lArticle.getNom());
+                stmt.setString(3, lArticle.getDescription());
+                stmt.setBoolean(4, lArticle.getAchat());
+                stmt.setInt(5, id);
+                
+                stmt.executeUpdate();//Execution du statement
+                
 		System.out.println("Article d'id " + id + " modifie avec succes !");
-            } else {
-		System.out.println("Aucun Article trouve avec l'ID specifie : " + id);
             }
-	}
+        } 
+        else {//Sinon, un message d'erreur s'affiche
+            System.out.println("Aucun article trouve avec l'ID specifie : " + id);
+        }
     }
 
     /**
@@ -139,16 +150,20 @@ public class ArticleService {
      * Sinon, un message d'erreur s'affiche
      */
     public static void supprimeArticle(Connection conn, int id) throws SQLException {
-	String query = "DELETE FROM Articles WHERE id = ?";
-	try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, id);
+	String query = "DELETE FROM Articles WHERE id = ?";//Requete sql
+        if (Verif.verifId(conn, id, "Articles")) {
+            /* Verification que l'article existe grace a son id par appele de la methode verifId de Verif
+            Si l'article existe, on peut le modifier */
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {//Statement utilisant la requete
+                stmt.setInt(1, id);
 
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected > 0) {
-		System.out.println("Article supprime avec succes !");
-            } else {
-		System.out.println("Aucun article trouve avec l'ID specifie : " + id);
+                stmt.executeUpdate();//Execution du statement
+                
+                System.out.println("Article supprime avec succes !");
             }
-	}
+        }
+        else {//Sinon, un message d'erreur s'affiche
+            System.out.println("Aucun article trouve avec l'ID specifie : " + id);
+        }
     }
 }

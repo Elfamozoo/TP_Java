@@ -1,5 +1,6 @@
 package affichageObjet;
 
+import dao.Verif;
 import modele.Fournisseur;
 
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class FournisseurAffiche {
      * 
      * @return Fournisseur
      * 
-     * Cette methode retourne un fournisseur
+     * Cette methode cree et retourne un fournisseur
      */
     public static Fournisseur creerFournisseur(){
         Fournisseur leFournisseur = new Fournisseur();
@@ -40,7 +41,15 @@ public class FournisseurAffiche {
         leFournisseur.setNom(clavier.nextLine());
         
         System.out.print("Email du fournisseur : ");
-        leFournisseur.setEmail(clavier.nextLine());
+        String email = clavier.nextLine();
+        while (!Verif.verifEmail(email)) {/*Appele de la methode verifEmail de Verif 
+            Pour verifier que l'email est valide
+            Tant qu'il est invalide, on doit le retaper*/
+            System.out.println("L'email entre n'est pas valide. Reessayer : ");
+            email = clavier.nextLine();
+        }
+        
+        leFournisseur.setEmail(email);
         
         System.out.print("Adresse du fournisseur : ");
         leFournisseur.setAdresse(clavier.nextLine());

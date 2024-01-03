@@ -16,26 +16,23 @@ public class ArticleAffiche {
      * Cette methode permet d'afficher les informations d'un article
      */
     public static void afficherArticle(Article lArticle){
-        String achat; 
-        //Pour eviter d'afficher true ou false
-        if(lArticle.getAchat()){
-            achat = "Oui";
-        }else{
-            achat = "Non";
-        }
+        String achat = (lArticle.getAchat()) ? "Oui" : "Non";; 
+        /* Pour eviter d'afficher true ou false
+        Si achat == true, on affiche Oui (l'article est acheter)
+        Sinon on affiche Non */
         
         System.out.println("ID: " + lArticle.getId() + 
                 ", Numero de l'article: " + lArticle.getNumeroArticle() + 
                 ", Nom: " + lArticle.getNom() + 
                 ", Description: " + lArticle.getDescription() + 
                 ", Acheter: " + achat);
-    }
+        }
     
     /**
      * 
      * @return Article
      * 
-     * Cette methode retourne un article
+     * Cette methode cree et retourne un article
      */
     public static Article creerArticle(){
         Article lArticle = new Article();
