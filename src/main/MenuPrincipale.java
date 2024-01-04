@@ -75,19 +75,24 @@ public class MenuPrincipale {
             Integer reponseAction  = 9;
 
             while (reponseTable != 0) {//Boucle sur l'affichage de la liste des tables
-                reponseTable = MenuTable.afficheTable();//Recuperation du numero de la table
-                if(reponseTable != 0 && reponseTable < 5){//Si un numero de table valide est saisie
-                    while (reponseAction != 0){//Boucle sur l'affichage de la liste d'action
-                        try{//Try pour la saisie
-                            reponseAction = MenuAction.afficheAction();
-                            ResultAction.afficheResult(conn, reponseTable, reponseAction);
+                try{//Try pour la saisie de la table
+                    reponseTable = MenuTable.afficheTable();//Recuperation du numero de la table
+                    if(reponseTable != 0 && reponseTable < 5){//Si un numero de table valide est saisie
+                        while (reponseAction != 0){//Boucle sur l'affichage de la liste d'action
+                            try{//Try pour la saisie de l'action
+                                reponseAction = MenuAction.afficheAction();
+                                ResultAction.afficheResult(conn, reponseTable, reponseAction);
 
+                            }
+                            catch(Exception e){//Recuperation d'eventuelles erreur de saisie de l'action
+                                System.out.println("Erreur de saisie, Reessayer");
+                            }
                         }
-                        catch(Exception e){//Recuperation d'eventuelles erreur de saisie
-                            System.out.println("Erreur de saisie, Reessayer");
-                        }
+                        reponseAction = 9;
                     }
-                    reponseAction = 9;
+                }
+                catch(Exception e){//Recuperation d'eventuelles erreur de saisie de la table
+                   System.out.println("Erreur de saisie, Reessayer");
                 }
             }
             conn.close();
