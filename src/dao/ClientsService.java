@@ -18,8 +18,8 @@ public class ClientsService {
         String query = "SELECT * FROM Clients";
         // Création d'un objet de type Clients. Il sera utilisé pour stocker les informations de chaque client.
         Clients lesClients = new Clients();
-        // Création d'un objet de type Statement. Il sera utilisé pour exécuter la requête SQL. Il est initialisé à null.
-        try (Statement stmt = conn.createStatement()) {
+        // Création d'un objet de type PreparedStatement. Il sera utilisé pour exécuter la requête SQL.
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
             // Exécution de la requête SQL. Le résultat est stocké dans un objet de type ResultSet.
             ResultSet rs = stmt.executeQuery(query);
             // Tant qu'il y a des lignes dans le résultat, on récupère les informations de chaque client et on les stocke dans l'objet lesClients.
