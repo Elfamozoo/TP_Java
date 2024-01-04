@@ -62,31 +62,37 @@ public class MenuPrincipale {
     private static final String DB_PASSWORD = "";
 
     public static void main(String[] args) {
-        try {
+        try {//Try pour la connection a la bdd
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             Entreprise.createDatabase(conn, DB_NAME);
             Entreprise.useDatabase(conn, DB_NAME);
             Entreprise.createTables(conn);
-
-            System.out.println();
-
+            //Connection et creation de la bdd et des tables
+            
+            //Initialisation des variables recuperant le numero de la table et de l'action
             Integer reponseTable = 9;
             Integer reponseAction  = 9;
 
-            while (reponseTable != 0) {
-                reponseTable = MenuTable.afficheTable();
-                if(reponseTable != 0){
-                    while (reponseAction != 0){
-                        reponseAction = MenuAction.afficheAction();
-                        ResultAction.afficheResult(conn, reponseTable, reponseAction);
+            while (reponseTable != 0) {//Boucle sur l'affichage de la liste des tables
+                reponseTable = MenuTable.afficheTable();//Recuperation du numero de la table
+                if(reponseTable != 0 && reponseTable < 5){//Si un numero de table valide est saisie
+                    while (reponseAction != 0){//Boucle sur l'affichage de la liste d'action
+                        try{//Try pour la saisie
+                            reponseAction = MenuAction.afficheAction();
+                            ResultAction.afficheResult(conn, reponseTable, reponseAction);
+
+                        }
+                        catch(Exception e){//Resuperation d'eventuelles erreur de saisie
+                            System.out.println("Erreur de saisie, Reessayer");
+                        }
                     }
+                    reponseAction = 9;
                 }
-                reponseAction = 9;
             }
             conn.close();
         }
-        catch(ClassNotFoundException | SQLException e){
+        catch(ClassNotFoundException | SQLException e){//Resuperation d'eventuelles erreur sql
             System.out.println(e);
         }
     }
