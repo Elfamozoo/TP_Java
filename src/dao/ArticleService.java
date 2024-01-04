@@ -67,7 +67,7 @@ public class ArticleService {
                 lArticle.setAcheter(rs.getBoolean("achat"));
                 
                 ArticleAffiche.afficherArticle(lArticle);
-                //Appele de la methode afficherArticle de ArticleAffiche pour afficher les informations de l'Article
+                //Appelle de la methode afficherArticle de ArticleAffiche pour afficher les informations de l'Article
             } else {//Sinon, un message d'erreur s'affiche
 		System.out.println("Aucun article trouve avec l'ID : " + id);
             }

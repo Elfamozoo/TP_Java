@@ -83,7 +83,7 @@ public class MenuPrincipale {
                             ResultAction.afficheResult(conn, reponseTable, reponseAction);
 
                         }
-                        catch(Exception e){//Resuperation d'eventuelles erreur de saisie
+                        catch(Exception e){//Recuperation d'eventuelles erreur de saisie
                             System.out.println("Erreur de saisie, Reessayer");
                         }
                     }
