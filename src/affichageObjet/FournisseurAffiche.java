@@ -34,13 +34,13 @@ public class FournisseurAffiche {
         Fournisseur leFournisseur = new Fournisseur();
         Scanner clavier = new Scanner(System.in);
         
-        System.out.print("Numero du fournisseur : ");
+        System.out.println("Numero du fournisseur : ");
         leFournisseur.setNumeroFournisseur(Integer.valueOf(clavier.nextLine()));
         
-        System.out.print("Nom du fournisseur : ");
+        System.out.println("Nom du fournisseur : ");
         leFournisseur.setNom(clavier.nextLine());
         
-        System.out.print("Email du fournisseur : ");
+        System.out.println("Email du fournisseur : ");
         String email = clavier.nextLine();
         while (!Verif.verifEmail(email)) {/*Appele de la methode verifEmail de Verif 
             Pour verifier que l'email est valide
@@ -51,7 +51,7 @@ public class FournisseurAffiche {
         
         leFournisseur.setEmail(email);
         
-        System.out.print("Adresse du fournisseur : ");
+        System.out.println("Adresse du fournisseur : ");
         leFournisseur.setAdresse(clavier.nextLine());
         
         return leFournisseur;
